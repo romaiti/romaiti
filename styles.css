@@ -1,0 +1,559 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: rgb(14, 1, 162);
+  background-size: 17px 17px;
+  background-image:
+          linear-gradient(to right, rgba(255, 255, 255, 0.608) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.608) 1px, transparent 1px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* all fonts!!! */
+
+@font-face {
+  font-family: digital-m;
+  src:url(digital-7m.ttf);
+}
+
+@font-face {
+  font-family: merchant;
+  src:url(merchant-copy.ttf);
+}
+
+/* Styles for landing page gif */
+
+.gif-wrapper {
+  position: relative;
+  overflow: inherit;
+  height: 100vh;
+  object-fit: cover; /* Crop from sides */
+  }
+  
+  .gif-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .full-screen-gif {
+    width: 100vw;
+    max-width: 100%; /* Maintain aspect ratio */
+    height: 100vh; /* Take full height */
+    object-fit: cover;
+  }
+
+
+  .text-on-gif {
+    text-align: center;
+    font-size: 10vh;
+    font-family: merchant;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+  
+
+/* Styles for the buttons */
+
+.work,
+.about-me {
+  position: absolute;
+  bottom: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+  color: #000000;
+  cursor: pointer;
+  background-color: #66ff00;
+  font-family: digital-m;
+  text-decoration: none;
+  text-align: center;
+}
+
+.work:hover,
+.about-me:hover {
+  background-color: #66ff00bb; /* Change color on hover */
+  color: #000000;
+  text-decoration: none;
+}
+
+.work:active,
+.about-me:active {
+  background-color: #2b5f08ce; /* Change color on click */
+  text-decoration: none;
+}
+
+@media (max-width: 540px) {
+  .work,
+  .about-me {
+    width: calc(50% - 32px); /* Adjust width for smaller screens */
+    bottom: 50px; /* Adjust positioning for smaller screens */
+  }
+
+  .work {
+    left: 10px; /* Adjust positioning for smaller screens */
+  }
+
+  .about-me {
+    right: 10px; /* Adjust positioning for smaller screens */
+  }
+}
+
+@media (min-width: 541px) {
+  .work,
+  .about-me {
+    width: 120px; /* Set a fixed width for larger screens */
+    bottom: 80px; /* Adjust positioning for larger screens */
+  }
+
+  .work {
+    left: 20%; /* Adjust positioning for larger screens */
+  }
+
+  .about-me {
+    right: 20%; /* Adjust positioning for larger screens */
+  }
+}
+
+/* Styles for notes dispersing gif */
+
+.second-gif {
+  width: 100%;
+  max-width: 1220px;
+  margin: 10px auto;
+}
+
+.full-width-gif-notes {
+  width: 100%;
+  display: block;
+  margin-bottom: -30px;
+}
+
+/* Styles for art section */
+
+.full-viewport-image-1 {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Arrange items vertically */
+}
+
+.full-viewport-image-1 img {
+  width: 100vw;
+  max-width: 100%; /* Maintain aspect ratio */
+  height: 100%; /* Take full height */
+  object-fit: cover;
+}
+
+.full-viewport-image-1 .art-title-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .art-title {
+  width: 24%;
+  height: auto;
+}
+
+.full-viewport-image-1 .art-description-wrapper {
+  position: absolute;
+  top: 15%; /* Shift it down by half its height */
+  left: 20%;
+  text-align: center;
+  width: 30%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .art-description {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.full-viewport-image-1 .art-gif-wrapper {
+  position: absolute;
+  top: 41%;
+  right: 5%;
+  text-align: center;
+  width: 60%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .art-gif {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.full-viewport-image-1 .more-button-art-wrapper {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .more-button-art {
+  width: 12%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styles for research section */
+
+.full-viewport-image-2 {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Arrange items vertically */
+}
+
+.full-viewport-image-2 img {
+  width: 100vw;
+  max-width: 100%; /* Maintain aspect ratio */
+  height: 100%; /* Take full height */
+  object-fit: cover;
+}
+
+.full-viewport-image-2 .research-title-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .research-title {
+  width: 24%;
+  height: auto;
+}
+
+.full-viewport-image-2 .research-description-wrapper {
+  position: absolute;
+  top: 15%; /* Shift it down by half its height */
+  left: 20%;
+  text-align: center;
+  width: 30%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .research-description {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.full-viewport-image-2 .research-gif-wrapper {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  text-align: center;
+  width: 60%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .research-gif {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.full-viewport-image-2 .more-button-research-wrapper {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .more-button-research {
+  width: 12%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styles for music section */
+
+.full-viewport-image-3 {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Arrange items vertically */
+}
+
+.full-viewport-image-3 img {
+  width: 100vw;
+  max-width: 100%; /* Maintain aspect ratio */
+  height: 100%; /* Take full height */
+  object-fit: cover;
+}
+
+.full-viewport-image-3 .music-title-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .music-title {
+  width: 24%;
+  height: auto;
+}
+
+.full-viewport-image-3 .music-description-wrapper {
+  position: absolute;
+  top: 15%; /* Shift it down by half its height */
+  left: 20%;
+  text-align: center;
+  width: 30%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .music-description {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.full-viewport-image-3 .music-gif-wrapper {
+  position: absolute;
+  top: 41%;
+  right: 5%;
+  text-align: center;
+  width: 60%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .music-gif {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.full-viewport-image-3 .more-button-music-wrapper {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .more-button-music {
+  width: 12%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styles for the wires dispersing gif */
+
+.third-gif {
+  width: 100%;
+  max-width: 1220px;
+  margin: 10px auto;
+}
+
+.full-width-gif-wire {
+  width: 100%;
+  display: block;
+  margin-bottom: -30px;
+}
+
+/* Styles for about me section */
+
+.about-me-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.about-me-header {
+  font-family: digital-m;
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(159, 200, 235, 0.776);
+}
+
+.about-me-description {
+  font-family: digital-m;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: rgba(159, 200, 235, 0.776);
+}
+
+.video-container {
+  position: relative;
+  width: 90%; /* Adjust the width as needed */
+  max-width: 900px; /* Define a maximum width if desired */
+  overflow: hidden; /* Ensure the video doesn't overflow its container */
+}
+
+.youtube-video {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
+  position: relative;
+  overflow: hidden; /* Ensure the video doesn't overflow its container */
+}
+
+.youtube-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Styles for the floating menu */
+
+.floating-menu {
+    position: fixed;
+    width: 30px;
+    top: 20px; /* Adjust as needed */
+    right: 0px; /* Adjust as needed */
+    z-index: 100;
+  }
+
+  #menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+  }
+  
+  .menu-items {
+    position: absolute;
+    font-size: 20px;
+    font-family: digital-m;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Adjust duration and easing as needed */
+    display: none;
+    border-radius: 10px;
+    z-index: 100;
+  }
+  
+  .menu-items.show {
+    display: block;
+    opacity: 1;
+    transition-delay: 0.1s; /* Add a slight delay for opening to ensure a smoother transition */
+    z-index: 100;
+  }
+  
+  .menu-items a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 5px;
+    z-index: 100;
+  }
+  
+  .menu-items a:hover {
+    color: #00ff04;
+    z-index: 100;
+  }
+  
+  .icon-container {
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .ball {
+    /* Adjust the icon size as needed */
+    width: 100px;
+    z-index: 100;
+  }
+
+  .about-me-menu {
+    cursor: pointer;
+  }
+
+  @media  (max-width: 540px) {
+    .ball {
+    width: 60px;
+    z-index: 100;}
+}
+  
+  .icon-text {
+    margin-top: -20px;
+    font-size: 25px;
+    right: 10px;
+    font-family: digital-m;
+    color: rgb(0, 0, 0);
+    padding: 3.7px;
+    border-radius: 10px;
+    background-color:#7bb6ff98;
+    z-index: 100;
+  }
+
+  @media  (max-width: 540px) {
+    .icon-text {
+    margin-top: -10px;
+    font-size: 20px;
+    z-index: 100;}
+}
+  
+  
+  @media (max-width: 1212px) {
+    .icon-container {
+      top: 0px;
+      right: 10px;
+      z-index: 100;
+    }
+  }
