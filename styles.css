@@ -99,7 +99,7 @@ body {
   .work,
   .about-me {
     width: calc(50% - 32px); /* Adjust width for smaller screens */
-    bottom: 85px; /* Adjust positioning for smaller screens */
+    bottom: 95px; /* Adjust positioning for smaller screens */
   }
 
   .work {
