@@ -57,7 +57,7 @@ body {
     font-family: merchant;
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 30px;
+    top: 45px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -99,15 +99,15 @@ body {
   .work,
   .about-me {
     width: calc(50% - 32px); /* Adjust width for smaller screens */
-    bottom: 50px; /* Adjust positioning for smaller screens */
+    bottom: 85px; /* Adjust positioning for smaller screens */
   }
 
   .work {
-    left: 10px; /* Adjust positioning for smaller screens */
+    left: 5px; /* Adjust positioning for smaller screens */
   }
 
   .about-me {
-    right: 10px; /* Adjust positioning for smaller screens */
+    right: 5px; /* Adjust positioning for smaller screens */
   }
 }
 
@@ -415,7 +415,7 @@ body {
   font-size: 30px;
   padding: 10px;
   border-radius: 5px;
-  background-color: rgba(159, 200, 235, 0.776);
+  background-color: rgba(174, 215, 251, 0.888);
 }
 
 .about-me-description {
@@ -424,7 +424,15 @@ body {
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
-  background-color: rgba(159, 200, 235, 0.776);
+  background-color: rgba(174, 215, 251, 0.888);
+  line-height: 1.5;
+}
+
+@media  (max-width: 540px) {
+
+  .about-me-description {
+    font-size: 20px;
+  }
 }
 
 .video-container {
@@ -525,8 +533,13 @@ body {
   }
 
   @media  (max-width: 540px) {
+
+    .floating-menu {
+      top: 10px;
+    }
+
     .ball {
-    width: 60px;
+    width: 75px;
     z-index: 100;}
 }
   
