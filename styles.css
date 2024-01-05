@@ -534,12 +534,17 @@ body {
 
   @media  (max-width: 540px) {
 
-    .floating-menu {
-      top: 10px;
+  .floating-menu {
+    top: 10px;
     }
 
-    .ball {
-    width: 75px;
+  .ball {
+    width: 85px;
+    z-index: 100;
+  margin-bottom: 5px;}
+
+  .icon-text {
+    font-size: 23px;
     z-index: 100;}
 }
   
@@ -554,13 +559,6 @@ body {
     background-color:#7bff8898;
     z-index: 100;
   }
-
-  @media  (max-width: 540px) {
-    .icon-text {
-    margin-top: -10px;
-    font-size: 20px;
-    z-index: 100;}
-}
   
   
   @media (max-width: 1212px) {
