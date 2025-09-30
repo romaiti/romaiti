@@ -1,3 +1,4 @@
+/* ---------- Base / Page layout ---------- */
 html, body {
   margin: 0;
   padding: 0;
@@ -8,64 +9,102 @@ body {
   background-color: rgb(14, 1, 162);
   background-size: 17px 17px;
   background-image:
-          linear-gradient(to right, rgba(255, 255, 255, 0.608) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.608) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.608) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.608) 1px, transparent 1px);
   display: flex;
   flex-direction: column;
 }
 
-/* all fonts!!! */
-
+/* ---------- Fonts ---------- */
 @font-face {
   font-family: digital-m;
-  src:url(digital-7m.ttf);
+  src: url(digital-7m.ttf);
 }
 
 @font-face {
   font-family: merchant;
-  src:url(merchant-copy.ttf);
+  src: url(merchant-copy.ttf);
 }
 
-/* Styles for landing page gif */
-
+/* ---------- Landing GIF / header area ---------- */
 .gif-wrapper {
-  position: relative;
-  overflow: inherit;
+  position: relative;       /* ensure overlays can be absolutely positioned relative to the landing block */
+  overflow: visible;        /* allow absolute overlays to appear without clipping */
   height: 100vh;
-  object-fit: cover; /* Crop from sides */
-  }
-  
-  .gif-container {
-    width: 100%;
-    max-width: 100vw;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .full-screen-gif {
-    width: 100vw;
-    max-width: 100%; /* Maintain aspect ratio */
-    height: 100vh; /* Take full height */
-    object-fit: cover;
-  }
+  object-fit: cover;
+}
 
+.gif-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;            /* ensure full viewport height for gifs */
+  max-width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 0;               /* images will sit underneath overlay text/buttons */
+}
 
-  .text-on-gif {
-    text-align: center;
-    font-size: 10vh;
-    font-family: merchant;
-    color: rgb(0, 0, 0);
-    position: absolute;
-    top: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-  }
-  
+.home-intro-gif,
+.home-main-gif,
+.full-screen-gif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
 
-/* Styles for the buttons */
+/* main gif hidden until ready — NO transition so it appears instantly */
+.home-main-gif {
+  visibility: hidden;
+  opacity: 0;
+  transition: none !important;
+}
 
+/* remove intro from flow when hidden */
+.home-intro-gif.hidden {
+  display: none !important;
+}
+
+/* fallback class used by other parts of your original css naming */
+.full-screen-gif {
+  /* ensures compatibility with older rules that used this classname */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ---------- Landing title overlay ("rohini maiti") ---------- */
+.text-on-gif {
+  position: absolute !important;
+  top: 45px;                          /* original vertical placement */
+  left: 50%;
+  transform: translateX(-50%) !important;
+  width: auto;
+  max-width: 90vw;
+  z-index: 130;
+  pointer-events: none;
+  text-align: center;
+  font-family: merchant;
+  color: rgb(230, 232, 203);
+  font-size: 30vh;                    /* final size you chose */
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* ---------- Call-to-action buttons (My Work / About Me) ---------- */
 .work,
 .about-me {
   position: absolute;
@@ -84,51 +123,39 @@ body {
 
 .work:hover,
 .about-me:hover {
-  background-color: #66ff00bb; /* Change color on hover */
+  background-color: #66ff00bb;
   color: #000000;
   text-decoration: none;
 }
 
 .work:active,
 .about-me:active {
-  background-color: #2b5f08ce; /* Change color on click */
+  background-color: #2b5f08ce;
   text-decoration: none;
 }
 
+/* layout for different screen widths (buttons) */
 @media (max-width: 540px) {
   .work,
   .about-me {
-    width: calc(50% - 32px); /* Adjust width for smaller screens */
-    bottom: 95px; /* Adjust positioning for smaller screens */
+    width: calc(50% - 32px);
+    bottom: 95px;
   }
-
-  .work {
-    left: 5px; /* Adjust positioning for smaller screens */
-  }
-
-  .about-me {
-    right: 5px; /* Adjust positioning for smaller screens */
-  }
+  .work { left: 5px; }
+  .about-me { right: 5px; }
 }
 
 @media (min-width: 541px) {
   .work,
   .about-me {
-    width: 120px; /* Set a fixed width for larger screens */
-    bottom: 80px; /* Adjust positioning for larger screens */
+    width: 120px;
+    bottom: 80px;
   }
-
-  .work {
-    left: 20%; /* Adjust positioning for larger screens */
-  }
-
-  .about-me {
-    right: 20%; /* Adjust positioning for larger screens */
-  }
+  .work { left: 20%; }
+  .about-me { right: 20%; }
 }
 
-/* Styles for notes dispersing gif */
-
+/* ---------- Secondary gifs / page content ---------- */
 .second-gif {
   width: 100%;
   max-width: 1220px;
@@ -140,253 +167,6 @@ body {
   display: block;
   margin-bottom: -30px;
 }
-
-/* Styles for art section */
-
-.full-viewport-image-1 {
-  position: relative;
-  width: 100%;
-  max-width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Arrange items vertically */
-}
-
-.full-viewport-image-1 img {
-  width: 100vw;
-  max-width: 100%; /* Maintain aspect ratio */
-  height: 100%; /* Take full height */
-  object-fit: cover;
-}
-
-.full-viewport-image-1 .art-title-wrapper {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.full-viewport-image-1 .art-title {
-  width: 24%;
-  height: auto;
-}
-
-.full-viewport-image-1 .art-description-wrapper {
-  position: absolute;
-  top: 15%; /* Shift it down by half its height */
-  left: 20%;
-  text-align: center;
-  width: 30%;
-  z-index: 1;
-}
-
-.full-viewport-image-1 .art-description {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-.full-viewport-image-1 .art-gif-wrapper {
-  position: absolute;
-  top: 41%;
-  right: 5%;
-  text-align: center;
-  width: 60%;
-  z-index: 1;
-}
-
-.full-viewport-image-1 .art-gif {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-.full-viewport-image-1 .more-button-art-wrapper {
-  position: absolute;
-  top: 83%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.full-viewport-image-1 .more-button-art {
-  width: 12%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Styles for research section */
-
-.full-viewport-image-2 {
-  position: relative;
-  width: 100%;
-  max-width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Arrange items vertically */
-}
-
-.full-viewport-image-2 img {
-  width: 100vw;
-  max-width: 100%; /* Maintain aspect ratio */
-  height: 100%; /* Take full height */
-  object-fit: cover;
-}
-
-.full-viewport-image-2 .research-title-wrapper {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.full-viewport-image-2 .research-title {
-  width: 24%;
-  height: auto;
-}
-
-.full-viewport-image-2 .research-description-wrapper {
-  position: absolute;
-  top: 15%; /* Shift it down by half its height */
-  left: 20%;
-  text-align: center;
-  width: 30%;
-  z-index: 1;
-}
-
-.full-viewport-image-2 .research-description {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-.full-viewport-image-2 .research-gif-wrapper {
-  position: absolute;
-  top: 30%;
-  right: 5%;
-  text-align: center;
-  width: 60%;
-  z-index: 1;
-}
-
-.full-viewport-image-2 .research-gif {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-
-.full-viewport-image-2 .more-button-research-wrapper {
-  position: absolute;
-  top: 87%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.full-viewport-image-2 .more-button-research {
-  width: 12%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Styles for music section */
-
-.full-viewport-image-3 {
-  position: relative;
-  width: 100%;
-  max-width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Arrange items vertically */
-}
-
-.full-viewport-image-3 img {
-  width: 100vw;
-  max-width: 100%; /* Maintain aspect ratio */
-  height: 100%; /* Take full height */
-  object-fit: cover;
-}
-
-.full-viewport-image-3 .music-title-wrapper {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.full-viewport-image-3 .music-title {
-  width: 24%;
-  height: auto;
-}
-
-.full-viewport-image-3 .music-description-wrapper {
-  position: absolute;
-  top: 15%; /* Shift it down by half its height */
-  left: 20%;
-  text-align: center;
-  width: 30%;
-  z-index: 1;
-}
-
-.full-viewport-image-3 .music-description {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-.full-viewport-image-3 .music-gif-wrapper {
-  position: absolute;
-  top: 41%;
-  right: 5%;
-  text-align: center;
-  width: 60%;
-  z-index: 1;
-}
-
-.full-viewport-image-3 .music-gif {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
-
-
-.full-viewport-image-3 .more-button-music-wrapper {
-  position: absolute;
-  top: 87%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-}
-
-.full-viewport-image-3 .more-button-music {
-  width: 12%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Styles for the wires dispersing gif */
 
 .third-gif {
   width: 100%;
@@ -400,8 +180,171 @@ body {
   margin-bottom: -30px;
 }
 
-/* Styles for about me section */
+/* ---------- Full-viewport image sections (Art / Research / Music) ---------- */
+.full-viewport-image-1,
+.full-viewport-image-2,
+.full-viewport-image-3 {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+/* Base image rules for those sections */
+.full-viewport-image-1 img,
+.full-viewport-image-2 img,
+.full-viewport-image-3 img {
+  width: 100vw;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Titles, descriptions and positioned GIF wrappers for art */
+.full-viewport-image-1 .art-title-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .art-title { width: 24%; height: auto; }
+
+.full-viewport-image-1 .art-description-wrapper {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  text-align: center;
+  width: 30%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .art-description { width: 100%; max-width: 100%; height: auto; }
+
+.full-viewport-image-1 .art-gif-wrapper {
+  position: absolute;
+  top: 41%;
+  right: 5%;
+  text-align: center;
+  width: 60%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .art-gif { width: 100%; max-width: 100%; height: auto; }
+
+.full-viewport-image-1 .more-button-art-wrapper {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-1 .more-button-art { width: 12%; height: auto; display: block; margin: 0 auto; }
+
+/* Research section */
+.full-viewport-image-2 .research-title-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .research-title { width: 24%; height: auto; }
+
+.full-viewport-image-2 .research-description-wrapper {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  text-align: center;
+  width: 30%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .research-description { width: 100%; max-width: 100%; height: auto; }
+
+.full-viewport-image-2 .research-gif-wrapper {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  text-align: center;
+  width: 60%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .research-gif { width: 100%; max-width: 100%; height: auto; }
+
+.full-viewport-image-2 .more-button-research-wrapper {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-2 .more-button-research { width: 12%; height: auto; display: block; margin: 0 auto; }
+
+/* Music section */
+.full-viewport-image-3 .music-title-wrapper {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .music-title { width: 24%; height: auto; }
+
+.full-viewport-image-3 .music-description-wrapper {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  text-align: center;
+  width: 30%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .music-description { width: 100%; max-width: 100%; height: auto; }
+
+.full-viewport-image-3 .music-gif-wrapper {
+  position: absolute;
+  top: 41%;
+  right: 5%;
+  text-align: center;
+  width: 60%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .music-gif { width: 100%; max-width: 100%; height: auto; }
+
+.full-viewport-image-3 .more-button-music-wrapper {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.full-viewport-image-3 .more-button-music { width: 12%; height: auto; display: block; margin: 0 auto; }
+
+/* ---------- About section ---------- */
 .about-me-section {
   display: flex;
   flex-direction: column;
@@ -428,26 +371,24 @@ body {
   line-height: 1.5;
 }
 
-@media  (max-width: 540px) {
-
-  .about-me-description {
-    font-size: 20px;
-  }
+@media (max-width: 540px) {
+  .about-me-description { font-size: 20px; }
 }
 
+/* Video container */
 .video-container {
   position: relative;
-  width: 90%; /* Adjust the width as needed */
-  max-width: 900px; /* Define a maximum width if desired */
-  overflow: hidden; /* Ensure the video doesn't overflow its container */
+  width: 90%;
+  max-width: 900px;
+  overflow: hidden;
 }
 
 .youtube-video {
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
+  padding-bottom: 56.25%;
   position: relative;
-  overflow: hidden; /* Ensure the video doesn't overflow its container */
+  overflow: hidden;
 }
 
 .youtube-video iframe {
@@ -458,113 +399,150 @@ body {
   height: 100%;
 }
 
-
-/* Styles for the floating menu */
-
+/* ---------- Floating menu & icon (final, deduped) ---------- */
 .floating-menu {
-    position: fixed;
-    width: 30px;
-    top: 20px; /* Adjust as needed */
-    right: 0px; /* Adjust as needed */
-    z-index: 100;
-  }
-
-  #menuButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    z-index: 100;
-  }
-  
-  .menu-items {
-    position: absolute;
-    font-size: 20px;
-    font-family: digital-m;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s ease; /* Adjust duration and easing as needed */
-    display: none;
-    border-radius: 10px;
-    z-index: 100;
-  }
-  
-  .menu-items.show {
-    display: block;
-    opacity: 1;
-    transition-delay: 0.1s; /* Add a slight delay for opening to ensure a smoother transition */
-    z-index: 100;
-  }
-  
-  .menu-items a {
-    display: block;
-    text-decoration: none;
-    color: #333;
-    margin-bottom: 5px;
-    z-index: 100;
-  }
-  
-  .menu-items a:hover {
-    color: #00ff04;
-    z-index: 100;
-  }
-  
-  .icon-container {
-    position: absolute;
-    top: 0px;
-    right: -10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 100;
-  }
-  
-  .ball {
-    /* Adjust the icon size as needed */
-    width: 100px;
-    z-index: 100;
-  }
-
-  .about-me-menu {
-    cursor: pointer;
-  }
-
-  @media  (max-width: 540px) {
-
-  .floating-menu {
-    top: 10px;
-    }
-
-  .ball {
-    width: 85px;
-    z-index: 100;
-  margin-bottom: 5px;}
-
-  .icon-text {
-    font-size: 23px;
-    z-index: 100;}
+  position: fixed;
+  top: 18px;
+  right: 12px;
+  z-index: 120;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  background: transparent;
+  padding: 0;
 }
-  
-  .icon-text {
-    margin-top: -20px;
-    font-size: 25px;
-    right: 10px;
-    font-family: digital-m;
-    color: rgb(0, 0, 0);
-    padding: 3.7px;
-    border-radius: 10px;
-    background-color:#7bff8898;
-    z-index: 100;
+
+#menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 121;
+}
+
+/* Icon container: tight stacked layout but button captures clicks */
+.icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none; /* allow button to capture clicks */
+  gap: 0;
+}
+
+/* Ball icon */
+.ball {
+  width: 100px;
+  height: auto;
+  display: block;
+  pointer-events: auto;
+}
+
+/* Icon label stacked tight beneath the ball (tweak margin-top to nudge) */
+.icon-text {
+  margin-top: -18px;
+  font-size: 25px;
+  font-family: digital-m;
+  color: rgb(0, 0, 0);
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: rgba(123,255,136,0.6);
+  z-index: 122;
+  display: inline-block;
+  text-align: center;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Menu dropdown */
+.menu-items {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  font-size: 20px;
+  font-family: digital-m;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: none;
+  border-radius: 10px;
+  z-index: 119;
+  white-space: nowrap;
+}
+
+.menu-items.show {
+  display: block;
+  opacity: 1;
+  transition-delay: 0.05s;
+}
+
+.menu-items a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.menu-items a:hover { color: #00ff04; }
+
+/* ---------- Responsive & narrow-screen behaviors ---------- */
+/* rotate only the two landing gifs on narrow screens and adjust overlays */
+@media (max-width: 900px) {
+  .home-intro-gif,
+  .home-main-gif {
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center center;
+    object-fit: cover;
   }
-  
-  
-  @media (max-width: 1212px) {
-    .icon-container {
-      top: 0px;
-      right: 10px;
-      z-index: 100;
-    }
+
+  .text-on-gif {
+    z-index: 2;
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: normal;
+    max-width: 88vw;
   }
+
+  .work,
+  .about-me {
+    z-index: 2;
+    position: absolute;
+  }
+
+  /* smaller icon tweaks */
+  .ball { width: 85px; margin-bottom: 5px; }
+  .icon-text { font-size: 23px; margin-top: -14px; padding: 3px 7px; }
+}
+
+/* very narrow phones */
+@media (max-width: 540px) {
+  .home-intro-gif,
+  .home-main-gif {
+    width: 100vh;
+    height: 100vw;
+  }
+
+  .icon-text { margin-top: -12px; font-size: 21px; padding: 3px 6px; }
+
+  .text-on-gif {
+    font-size: 25vh;
+    top: 90px;
+    max-width: 86vw;
+  }
+}
