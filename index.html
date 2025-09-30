@@ -12,13 +12,13 @@
 <body>
 
   <div class="floating-menu">
-    <button id="menuButton">
+    <button id="menuButton" aria-label="Open menu">
       <div class="icon-container">
         <img src="images/ballicon.png" alt="Menu Icon" class="ball">
         <span class="icon-text">Menu</span>
       </div>
     </button>
-    <div class="menu-items">
+    <div class="menu-items" role="menu" aria-hidden="true">
       <!-- Menu Items -->
       <a href="index.html">Home</a>
       <a href="https://romaitiart.wordpress.com/">Art</a>
@@ -30,8 +30,14 @@
 
   <div class="gif-wrapper">
     <div class="gif-container">
-      <img src="homescreen.gif" alt="High-quality GIF" class="full-screen-gif">
+      <!-- Intro GIF (plays once on first load) -->
+      <img id="introGif" src="homescreen1.gif" alt="Intro GIF" class="home-intro-gif" data-frames="87" data-fps="24">
+
+      <!-- Main looping GIF (hidden while intro plays) -->
+      <img id="mainGif" src="homescreen.gif" alt="High-quality GIF" class="home-main-gif full-screen-gif">
+
     </div>
+
     <div class="button-left">
       <a class="work">My Work</a>
     </div>
@@ -108,23 +114,23 @@
   </div>
 
   <div id="aboutSection">
-  <div class="about-me-section">
-    <h2 class="about-me-header">ABOUT ME</h2>
-    <div class="video-container">
-      <div class="youtube-video">
-        <iframe class="youtube-player" 
-          src="https://www.youtube.com/embed/F2vaGQ8AQ68?si=6zsgAamYNicqYbLN" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen
-        ></iframe>
+    <div class="about-me-section">
+      <h2 class="about-me-header">ABOUT ME</h2>
+      <div class="video-container">
+        <div class="youtube-video">
+          <iframe class="youtube-player" 
+            src="https://www.youtube.com/embed/F2vaGQ8AQ68?si=6zsgAamYNicqYbLN" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
+      <p class="about-me-description">
+        As an interdisciplinary artist, I engage in a studio practice that serves as a form of research. Within this practice, I explore the intersection of art and education, investigating how artistic methods can enhance learning frameworks. Furthermore, I delve into community engagement as a catalyst for transformative models of change, aiming to seamlessly integrate enduring artistic practices into this process.
+      </p>
     </div>
-    <p class="about-me-description">
-      As an interdisciplinary artist, I engage in a studio practice that serves as a form of research. Within this practice, I explore the intersection of art and education, investigating how artistic methods can enhance learning frameworks. Furthermore, I delve into community engagement as a catalyst for transformative models of change, aiming to seamlessly integrate enduring artistic practices into this process.
-    </p>
-  </div>
   </div>
 
   <script src="script.js"></script>
