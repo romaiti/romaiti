@@ -87,7 +87,7 @@ body {
 /* ---------- Landing title overlay ("rohini maiti") ---------- */
 .text-on-gif {
   position: absolute !important;
-  top: 45px;                          /* original vertical placement */
+  top: 50px;                          /* original vertical placement */
   left: 50%;
   transform: translateX(-50%) !important;
   width: auto;
@@ -104,21 +104,43 @@ body {
   white-space: nowrap;
 }
 
-/* ---------- Call-to-action buttons (My Work / About Me) ---------- */
 .work,
 .about-me {
-  position: absolute;
-  bottom: 20px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 25px;
-  color: #000000;
-  cursor: pointer;
-  background-color: #66ff00;
-  font-family: digital-m;
-  text-decoration: none;
-  text-align: center;
+position: absolute;
+min-width: 0 !important;     /* prevents calc() or other rules from forcing width */
+max-width: none !important;
+padding: 0 !important;       /* reset padding that could stretch the element */
+border: none;
+border-radius: 50% !important; /* perfect circle */
+display: flex !important;    /* center text */
+align-items: center !important;
+justify-content: center !important;
+box-sizing: border-box;
+overflow: hidden;             /* hide any overflowing text */
+white-space: normal;          /* allow wrap if needed */
+line-height: 1;
+text-align: center;
+background-color: #66ff0070;
+color: #000;
+font-family: merchant;
+text-decoration: none;
+cursor: pointer;
+}
+
+.work {
+  bottom: 21vh;
+  left: 26vw;
+  width: 180px !important;
+  height: 180px !important;
+  font-size: 40px;             /* shrink to fit inside circle */
+}
+
+.about-me {
+  bottom: 10vh;
+  right: 20vw;
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 30px;             /* shrink to fit inside circle */
 }
 
 .work:hover,
@@ -134,26 +156,7 @@ body {
   text-decoration: none;
 }
 
-/* layout for different screen widths (buttons) */
-@media (max-width: 540px) {
-  .work,
-  .about-me {
-    width: calc(50% - 32px);
-    bottom: 95px;
-  }
-  .work { left: 5px; }
-  .about-me { right: 5px; }
-}
 
-@media (min-width: 541px) {
-  .work,
-  .about-me {
-    width: 120px;
-    bottom: 80px;
-  }
-  .work { left: 20%; }
-  .about-me { right: 20%; }
-}
 
 /* ---------- Secondary gifs / page content ---------- */
 .second-gif {
@@ -497,7 +500,7 @@ body {
 
 /* ---------- Responsive & narrow-screen behaviors ---------- */
 /* rotate only the two landing gifs on narrow screens and adjust overlays */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .home-intro-gif,
   .home-main-gif {
     top: 50%;
@@ -512,11 +515,12 @@ body {
   .text-on-gif {
     z-index: 2;
     position: absolute;
-    top: 22px;
+    top: 13vh;
     left: 50%;
     transform: translateX(-50%);
     white-space: normal;
     max-width: 88vw;
+    font-size: 18vh;
   }
 
   .work,
@@ -540,9 +544,27 @@ body {
 
   .icon-text { margin-top: -12px; font-size: 21px; padding: 3px 6px; }
 
-  .text-on-gif {
-    font-size: 18vh;
-    top: 90px;
-    max-width: 86vw;
+  .work {
+    width: 120px !important;
+    height: 120px !important;
+    left: 7vw;
+    font-size: 30px;
+    bottom: 140px; /* keep your existing mobile offset if desired */
   }
+
+  .about-me {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 25px;
+    right: 6vw;
+    bottom: 95px; /* keep your existing mobile offset if desired */
+  }
+
 }
+
+
+
+
+
+
+
